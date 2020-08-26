@@ -1,0 +1,50 @@
+.navbar-nav li a:hover,
+.navbar-nav > .active > a {
+  color: #fff;
+
+  background-color: #318bf4;
+  background-image: none;
+}
+
+.nav {
+  width: 100% !important;
+}
+
+.button-styles a {
+  color: #318bf4;
+}
+
+.button-styles a:hover {
+  background: blue;
+  border: 8px solid #318bf4;
+}
+.bg-light {
+  background-color: #000000 !important;
+}
+
+a {
+  color: white;
+}
+li {
+  color: white;
+}
+
+.logout-button {
+  color: white !important;
+  transition: 0.3s;
+}
+.logout-button:hover {
+  text-decoration: none;
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+.add-floor {
+  cursor: pointer;
+  padding-top: 0.5rem;
+}
+.add-floor-sign {
+  font-size: 2.1rem;
+  line-height: 1.05rem;
+  font-weight: 500;
+}

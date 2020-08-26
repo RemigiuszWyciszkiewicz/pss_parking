@@ -1,0 +1,93 @@
+<div class="parking-container">
+  <div class="row">
+    <div class="col-12 container h-100 p-3">
+      <div class="floor-number-label">
+        <div class="fa">
+          <div class="number">Floor {{ currentFloorNumber }}</div>
+
+          <div class="helper">
+            Click right mounse button on place to perform an action.
+          </div>
+        </div>
+
+        <div class="legend d-flex">
+          <div class="legend-item d-flex">
+            <div class="legend-square-1"></div>
+            <div class="legend-label">Hired</div>
+          </div>
+          <div class="legend-item d-flex">
+            <div class="legend-square-2"></div>
+            <div class="legend-label">Free</div>
+          </div>
+          <div class="legend-item">
+            <div class="legend-square-3"></div>
+            <div class="legend-label">Pending for approval</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="no-places-text" *ngIf="!places || !places.length">
+        There are no places on this floor.
+      </div>
+      <div class="text-center enter-exit" *ngIf="places && places.length > 23">
+        Entry
+      </div>
+      <div class="slots-container" #targetSlot>
+        <ng-container *ngFor="let slot of places; let index = index">
+          <div
+            class="slot take"
+            [id]="index"
+            [ngClass]="{
+              'slot-reserved': !slot.free && !slot.confirmed,
+              'slot-free': slot.free,
+              'slot-free-confirmed': slot.confirmed
+            }"
+          >
+            <div class="pilar" *ngIf="index == 26">PILLAR NO 1</div>
+            <div class="pilar" *ngIf="index == 32">PILLAR NO 2</div>
+            <div class="pilar" *ngIf="index == 50">PILLAR NO 3</div>
+            <div class="pilar" *ngIf="index == 56">PILLAR NO 4</div>
+          </div>
+        </ng-container>
+        <ng-container *ngIf="isLoggedAsAdmin">
+          <div
+            class="slot add-place"
+            *ngIf="places && places.length < 72"
+            (click)="addPlace()"
+          >
+            <span class="add-place-text">
+              Add <br />
+              place
+              <br />
+            </span>
+
+            <span class="add-place-sign">+</span>
+          </div>
+        </ng-container>
+      </div>
+      <div class="text-center enter-exit" *ngIf="places && places.length > 23">
+        Exit
+      </div>
+    </div>
+  </div>
+</div>
+
+<kendo-contextmenu
+  (popupOpen)="open($event)"
+  [target]="targetSlot"
+  filter=".take"
+  #menu
+>
+  <ng-template kendoContextMenuTemplate>
+    <ng-container *ngFor="let menuOption of contextMenuOptions">
+      <div
+        *ngIf="menuOption.enabled"
+        class="menu-item"
+        (click)="menuOption.event($event); menu.hide()"
+      >
+        {{ menuOption.title }}
+      </div>
+    </ng-container>
+  </ng-template>
+  <kendo-menu-item text="Item2"> </kendo-menu-item>
+</kendo-contextmenu>

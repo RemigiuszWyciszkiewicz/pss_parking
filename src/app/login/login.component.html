@@ -1,0 +1,66 @@
+<div class="background">
+  <div class="login-container mt-4">
+    <div class="row">
+      <div class="col-sm-12 p-0">
+        <form name="form" #loginform="ngForm">
+          <div class="form-group">
+            <label for="username">Email</label>
+            <input
+              id="username"
+              type="text"
+              class="form-control"
+              name="username"
+              ngModel
+              #username="ngModel"
+              required
+            />
+            <div
+              *ngIf="username.invalid && loginform.submitted"
+              class="alert-info"
+            >
+              Email can not be empty!
+            </div>
+
+            <label class="mt-2" for="password">Password</label>
+            <input
+              id="password"
+              type="password"
+              class="form-control"
+              name="password"
+              ngModel
+              #password="ngModel"
+              required
+              minlength="6"
+            />
+            <div
+              *ngIf="password.invalid && loginform.submitted"
+              class="alert-info"
+            >
+              Password can not be empty!
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="row w-100 mt-3">
+        <div class="col-6">
+          <button
+            type="submit"
+            class="btn btn-primary w-100"
+            (click)="signin()"
+          >
+            Sign in
+          </button>
+        </div>
+        <div class="col-6">
+          <button [routerLink]="['/register']" class="btn btn-primary w-100">
+            Sign Up
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="isLoginFailed">
+      Incorrect password or username!
+    </div>
+  </div>
+</div>

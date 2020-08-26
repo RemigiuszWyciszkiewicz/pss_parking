@@ -1,0 +1,15 @@
+$primary-color: rgb(252, 166, 245);
+
+@import "~@fortawesome/fontawesome-free/scss/fontawesome";
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+body {
+  height: 100%;
+}
+
+html {
+  height: 100%;
+}

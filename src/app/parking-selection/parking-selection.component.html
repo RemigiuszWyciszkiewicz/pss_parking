@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="header mb-3">
+    Select a parking
+  </div>
+
+  <div class="parking-container d-flex flex-wrap">
+    <div *ngIf="!parking || !parking.length">
+      No parkings avaiable
+    </div>
+    <ng-container *ngFor="let item of parking">
+      <div *appPlacesCount="item; let data = placeCount">
+        <div (click)="onParkingSelection(item)" class="parking mt-2">
+          Street:
+          <div class="label">{{ item.street }}</div>
+          City:
+          <div class="label">{{ item.city }}</div>
+          Total Places:
+          <div class="label">{{ data }}</div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+
+  <div *ngIf="isLoggedAsAdmin">
+    <div class="header mt-4 mb-4">
+      Create a parking
+    </div>
+
+    <div class="" [formGroup]="formGroup" class="col-2 mb-3 p-0">
+      Street
+      <input class="form-control" formControlName="street" />
+      City
+      <input class="form-control" formControlName="city" />
+    </div>
+
+    <button
+      [disabled]="!formGroup.valid"
+      class="btn btn-primary"
+      (click)="createParking()"
+    >
+      Submit
+    </button>
+  </div>
+</div>

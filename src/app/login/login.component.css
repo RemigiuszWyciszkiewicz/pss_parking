@@ -1,0 +1,32 @@
+.text {
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.background {
+  background-image: url("https://images.unsplash.com/photo-1463541555616-ad5d33ef6339?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80");
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+label {
+  color: white;
+  font-weight: 500;
+}
+
+.form-control:focus {
+  border-color: inherit;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+.login-container {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 4rem;
+  width: 25%;
+  filter: blur(4%);
+}

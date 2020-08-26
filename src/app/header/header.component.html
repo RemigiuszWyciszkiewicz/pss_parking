@@ -1,0 +1,21 @@
+<nav class="navbar navbar-expand-sm bg-light">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav justify-content-between">
+      <div class="floors-container d-flex">
+        <ng-container *ngFor="let floor of iterationNumbers; let i = index">
+          <li class="nav-item mr-4" (click)="changeFloor(i + 1)">
+            <a class="nav-link" routerLink="parking">Floor {{ i + 1 }}</a>
+          </li>
+        </ng-container>
+
+        <li class="add-floor" (click)="addFloor()" *ngIf="isLoggedAsAdmin">
+          <a class="add-floor">
+            <div class="add-floor-sign">+</div>
+          </a>
+        </li>
+      </div>
+    </ul>
+
+    <a class="logout-button" (click)="logout()">Logout</a>
+  </div>
+</nav>

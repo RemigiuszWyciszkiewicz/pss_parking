@@ -1,0 +1,107 @@
+<div class="background">
+  <div class="login-container mt-4">
+    <div class="row">
+      <div class="col-sm-12 w-100">
+        <form #registerForm="ngForm" (ngSubmit)="signUp()">
+          <div class="form-group">
+            <label class="label mt-2" for="name">Your name</label>
+            <input
+              id="name"
+              type="text"
+              class="form-control"
+              name="name"
+              #name="ngModel"
+              ngModel
+              required
+              minlength="3"
+            />
+
+            <div
+              *ngIf="registerForm.submitted && name.invalid"
+              class="alert alert-warning"
+            >
+              <div *ngIf="name.errors.required">Name is required</div>
+              <div *ngIf="name.errors.minlength">Name is too short!</div>
+            </div>
+
+            <label class="label mt-2" for="username">Username</label>
+            <input
+              id="username"
+              type="text"
+              class="form-control"
+              name="username"
+              #username="ngModel"
+              ngModel
+              required
+              minlength="3"
+            />
+
+            <div
+              *ngIf="registerForm.submitted && username.invalid"
+              class="alert alert-warning"
+            >
+              <div *ngIf="username.errors.required">Username is required!</div>
+              <div *ngIf="username.errors.minlength">
+                Username is too short!
+              </div>
+            </div>
+
+            <label class="label mt-2" for="email">Email</label>
+            <input
+              id="email"
+              type="text"
+              class="form-control"
+              name="email"
+              #email="ngModel"
+              ngModel
+              required
+              email
+            />
+
+            <div
+              *ngIf="registerForm.submitted && email.invalid"
+              class="alert alert-warning"
+            >
+              <div *ngIf="email.errors.required">Email is required!</div>
+              <div *ngIf="email.errors.email">Please type correct email</div>
+            </div>
+
+            <label class="label mt-2" for="password">Password</label>
+            <input
+              id="password"
+              type="password"
+              class="form-control mb-3"
+              name="password"
+              #password="ngModel"
+              ngModel
+              minlength="6"
+              required
+            />
+
+            <div
+              *ngIf="registerForm.submitted && password.invalid"
+              class="alert alert-warning"
+            >
+              <div *ngIf="password.isRequired">Password is required!</div>
+              <div *ngIf="password.errors.minlength">
+                Password is too short!
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary mr-4 mb-2">
+              Create account
+            </button>
+            <button class="btn btn-primary" routerLink="/login">
+              Redirect to login form
+            </button>
+            <div *ngIf="isUsernameTaken" class="text-info" style="color: red;">
+              Username is already taken!
+            </div>
+            <div *ngIf="isEmailTaken" class="text-info" style="color: red;">
+              Email is already taken!
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

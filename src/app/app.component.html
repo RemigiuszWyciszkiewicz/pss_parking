@@ -1,0 +1,6 @@
+<ng-container *ngIf="parkingFetched">
+  <app-header *ngIf="isLoggedin$ | async"></app-header>
+</ng-container>
+<div [class.bg]="isLoggedin$ | async">
+  <router-outlet></router-outlet>
+</div>
